@@ -34,6 +34,6 @@ Place files in /srv/ftp/pub/
 
 Configure a cron to do the below or do it manually
 
-    chmod -R 777 /srv/ftp/pub
+    sudo chmod -R 777 /srv/ftp/pub
 
-    chown -R ftp:ftp /srv/ftp/pub
+    sudo chown -R ftp:ftp /srv/ftp/pub
