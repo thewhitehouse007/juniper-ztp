@@ -10,9 +10,8 @@ sudo reboot
 
 sudo apt install isc-dhcp-server
 
-yum install vstfpd -y
+sudo apt install vstfpd
 
-sudo apt update
 ```
 
 Configure dhcpd for the interface you wish to use in '/etc/default/isc-dhcp-server' 
@@ -31,10 +30,10 @@ systemctl start isc-dhcp-server
 
 systemctl start vsftpd
 ```
-Place files in /var/ftp/pub
+Place files in /srv/ftp/pub/
 
 Configure a cron to do the below or do it manually
 
-    chmod -R 777 /var/ftp/pub
+    chmod -R 777 /srv/ftp/pub
 
-    chown -R ftp:ftp /var/ftp/pub
+    chown -R ftp:ftp /srv/ftp/pub
