@@ -1,5 +1,4 @@
-# juniper-ztp
-Juniper Zero Touch Provisioning
+# Zero Touch Provisioning Server Setup
 
 **Ubuntu 20.00**
 ```bash
@@ -16,11 +15,13 @@ yum install vstfpd -y
 sudo apt update
 ```
 
-#Configure dhcpd for the interface you wish to use in '/etc/default/isc-dhcp-server' 
+Configure dhcpd for the interface you wish to use in '/etc/default/isc-dhcp-server' 
+
     DHCPDv4_CONF=/etc/dhcp/dhcpd.conf
+    
     INTERFACESv4="ens160"
 
-#Configure vsftpd to be insecure - example config in this repo
+Configure vsftpd to be insecure - example config in this repo
 ```bash
 systemctl enable isc-dhcp-server
 
@@ -30,9 +31,9 @@ systemctl start isc-dhcp-server
 
 systemctl start vsftpd
 ```
-#Place files in /var/ftp/pub
+Place files in /var/ftp/pub
 
-#Configure a cron to do the below or do it manually
+Configure a cron to do the below or do it manually
 
     chmod -R 777 /var/ftp/pub
 
