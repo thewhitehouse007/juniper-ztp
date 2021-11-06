@@ -1,25 +1,23 @@
 # juniper-ztp
 Juniper Zero Touch Provisioning
 
-CentOS7
+Ubuntu 20
 
-#Disable selinux because you're a network guy and you dont understand Linux - /etc/selinux/config
+sudo apt update
 
-systemctl disable firewalld
+sudo apt upgrade 
 
-reboot
+sudo reboot
 
-yum install epel-release -y
-
-yum install dhcp -y
+sudp apt install isc-dhcp-server
 
 yum install vstfpd -y
 
-yum update -y
+sudo apt update
 
 #Configure dhcpd for the interface you wish to use - example config in this repo
 
-#Configure vsftpd to be insecure because you do networking - example config in this repo
+#Configure vsftpd to be insecure - example config in this repo
 
 systemctl enable dhcpd
 
