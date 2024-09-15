@@ -1,38 +1,39 @@
-# juniper-ztp
-Juniper Zero Touch Provisioning
+# Zero Touch Provisioning Server Setup
 
-CentOS7
+**Ubuntu 20.00**
+```bash
+sudo apt update
 
-#Disable selinux because you're a network guy and you dont understand Linux - /etc/selinux/config
+sudo apt upgrade 
 
-systemctl disable firewalld
+sudo reboot
 
-reboot
+sudo apt install isc-dhcp-server
 
-yum install epel-release -y
+sudo apt install vstfpd
 
-yum install dhcp -y
+```
 
-yum install vstfpd -y
+Configure dhcpd for the interface you wish to use in '/etc/default/isc-dhcp-server' 
 
-yum update -y
+    DHCPDv4_CONF=/etc/dhcp/dhcpd.conf
+    
+    INTERFACESv4="ens160"
 
-#Configure dhcpd for the interface you wish to use - example config in this repo
-
-#Configure vsftpd to be insecure because you do networking - example config in this repo
-
-systemctl enable dhcpd
+Configure vsftpd to be insecure - example config in this repo
+```bash
+systemctl enable isc-dhcp-server
 
 systemctl enable vsftpd
 
-systemctl start dhcpd
+systemctl start isc-dhcp-server
 
 systemctl start vsftpd
+```
+Place files in /srv/ftp/pub/
 
-#Place files in /var/ftp/pub
+Configure a cron to do the below or do it manually
 
-#Configure a cron to do the below or do it manually
+    sudo chmod -R 777 /srv/ftp/pub
 
-chmod -R 777 /var/ftp/pub
-
-chown -R ftp:ftp /var/ftp/pub
+    sudo chown -R ftp:ftp /srv/ftp/pub
